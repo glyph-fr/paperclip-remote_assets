@@ -8,7 +8,7 @@ the middleware checks if the file exists in your `public/system` folder and
 redirects to the remote target if it doesn't.
 
 > **Note** : This only works if your local assets storing path matches the
-remote one. Your remote path should start with /system/ too.
+remote one.
 
 ## Installation
 
@@ -43,7 +43,19 @@ alternatively, in some initializer or environment file :
 Paperclip::RemoteAssets.remote_root = 'http://www.my-production-domain.com'
 ```
 
-That's all.
+If your remote assets root path does not start with `/system`, you can set
+the following flag, so the middleware strips the leading `/system` from the
+requested path.
+
+```bash
+ENV['REMOTE_ASSETS_ROOT_INCLUDES_SYSTEM'] = 'false'
+```
+
+alternatively, in some initializer or environment file :
+
+```ruby
+Paperclip::RemoteAssets.remote_root_includes_system = false
+```
 
 ## Contributing
 
