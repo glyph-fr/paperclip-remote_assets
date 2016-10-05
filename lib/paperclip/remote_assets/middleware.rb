@@ -11,7 +11,7 @@ module Paperclip
 
       def call(env)
         if remote_asset?(env['REQUEST_PATH'])
-          [302, { 'Location': remote_asset_path_for(env['REQUEST_PATH']) }, []]
+          [302, { Location: remote_asset_path_for(env['REQUEST_PATH']) }, []]
         else
           app.call(env)
         end
